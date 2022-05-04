@@ -1,212 +1,236 @@
-% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) http://mboedick.org
-% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
-% (c) 2008 Nathaniel Johnston <nathaniel@nathanieljohnston.com> http://www.nathanieljohnston.com
-%
-% (c) 2012 Scott Clark <sc932@cornell.edu> cam.cornell.edu/~sc932
-%
-%This work is licensed under the Creative Commons Attribution-Noncommercial-Share Alike 2.5 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/2.5/ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
 
-%found template online
-\documentclass[10pt]{article}
-\usepackage{hyperref}
-\newlength{\outerbordwidth}
-\pagestyle{empty}
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+
 \raggedbottom
 \raggedright
-\usepackage[svgnames]{xcolor}
-\usepackage{framed}
-\usepackage{tocloft}
-\usepackage{enumitem}
-\usepackage{textcomp}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-
-
-%-----------------------------------------------------------
-%Edit these values as you see fit
-
-\setlength{\outerbordwidth}{0pt}  % Width of border outside of title bars
-\definecolor{shadecolor}{gray}{0.90}  % Outer background color of title bars (0 = black, 1 = white)
-\definecolor{shadecolorB}{gray}{0.90}  % Inner background color of title bars
-
-
-%-----------------------------------------------------------
-%Margin setup
-
-\setlength{\evensidemargin}{0.1in}
-\setlength{\headheight}{0in}
-\setlength{\headsep}{0in}
-\setlength{\oddsidemargin}{-0.35in}
 \setlength{\tabcolsep}{0in}
-\setlength{\textheight}{10in}
-\setlength{\textwidth}{7.2in}
-\setlength{\topmargin}{-0.6in}
-\setlength{\topskip}{0in}
-\setlength{\voffset}{0in}
 
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-%link
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=blue,
-    pdftitle={Jordan Hanson's Resume},
-    pdfpagemode=FullScreen,
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
 }
 
-
-
-
-%-----------------------------------------------------------
-%Custom commands
-\newcommand{\resitem}[1]{\item #1 \vspace{-4pt}}
-\newcommand{\resheading}[1]{
-  \parbox{\textwidth}{\setlength{\FrameSep}{\outerbordwidth}
-    \begin{shaded}
-\setlength{\fboxsep}{0pt}\framebox[\textwidth][l]{\setlength{\fboxsep}{4pt}\fcolorbox{shadecolorB}{shadecolorB}{\textbf{\sffamily{\mbox{~}\makebox[6.762in][l]{\large #1} \vphantom{p\^{E}}}}}}
-    \end{shaded}
-  }\vspace{-11pt}
-}
-\newcommand{\ressubheading}[4]{
-\begin{tabular*}{6.5in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
-    \textbf{#1} & #2 \\
-    \textit{#3} & \textit{#4} \\
-
-\end{tabular*}\vspace{-6pt}}
-
-\newcommand{\school}[4]{\vspace{1.5mm}
-  \textbf{#1} \hfill #2 \textit{#3} \hfill \textit{#4} \vspace{1.5mm}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\job}[4]{
-  \textbf{#1} \hfill #2 \hfill \textit{#3} \hfill \textit{#4}
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\skill}[2]{
-  \textbf{#1} #2
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\project}[4]{ \vspace{1.5mm}
-  \textbf{#1} #2 \hfill \textit{#3}#4 \vspace{1.5mm}
-}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
-\newcommand{\award}[4]{ \vspace{1.5mm}
-  \textbf{#1} #2 \hfill \textit{#3} #4 \vspace{1.5mm}
-}
-%-----------------------------------------------------------
-    \begin{document}
-    
-\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
-	\textbf{\Large Jordan Matthew Hanson} &
-	\textit{ \href{https://matthew.hanson.tech@gmail.com}{matthew.hanson.tech@gmail.com} \textbf{|} \href{https://matthew-hanson.com}{matthew-hanson.com}}
-\end{tabular*}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\resheading{Education}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}[leftmargin=*]
-	
-	\item[]
-	      \school
-	      {University of Florida}
-	      {Gainesville, FL\\}
-	      	{BS Computer Science, \textbf{GPA: 3.86}}
-	      	{August 2018 | December 2022}
-	      	
-	      \end{itemize}
-	      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	      \resheading{Work Experience}
-	      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	      \begin{itemize}[leftmargin=*]
-	      	\item[]
-	      	\job
-	      	      {American Express}
-	      	      {Phoenix, AZ}
-	      	      {Incoming Software Engineering Intern}
-	      	      {June 2022 | August 2022}
-	      	      \begin{itemize}
-	                \item Incoming American Express software engineering intern waiting on team placement 
-	      	      \end{itemize}
-	      	      \job
-	      	      {Giganetworks}
-	      	      {Miami, FL}
-	      	      {Software Engineering intern}
-	      	      {May 2021 | August 2021}
-	      	      \begin{itemize}
-	      	      	\item Lead developer of a team of 3 other Interns to develop a full-stack CRM web application which improved the organization of projects, clients, sales, events, and renewals
-	      	      	\item Directed weekly meetings to ascertain the team’s design needs and functionality requirements, which guided the development of the application
-	      	      	\item Implemented features such as soft deletes, email remainders, user authentication, and database backups
-	      	      \end{itemize}
-	      \end{itemize}
-	      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	      \resheading{Projects}
-	      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	      \begin{itemize}[leftmargin=*]
-	      	\item[]
-	      	      \project
-	      	      {Hatch}
-	      	      {Javascript, Firebase, React}
-	      	      {hatchmatch.app}
-	      	      {\\Developed a platform to give college entrepreneurs the tools to connect and grow an idea with 40+ users. Created a real-time chat by using a Firebase Function that listens for changes in the database. Designed a filtering feature that filters users by passions, skills, or city using a Firestore database document that stores user IDs for each topic.}
-	      	\item[]
-	      	      \project
-	      	      {resQ}
-	      	      {Javascript, Firebase, React Native}
-	      	      {devpost.com/software/resq-3tng2a}
-	      	      {\\Developed a full stack mobile app with three other students for a UF Hackathon, resulting in \textbf{1st Overall}. Created Google Cloud functions to send text messages and implemented user authentication using phone number}
-	      	\item[]
-	      	      \project
-	      	      {Mission DM}
-	      	      {Node, Firebase, React, Javascript}
-	      	      {missiondmatuf.com}
-	      	      {\\Created a secret agent style game with \textbf{100+ users} generating \textbf{\$1000+} for Shands Children Hospital. Architected a Node js backend that assigned and sent out emails with targets for each player every three days. Developed a front end with React.js that interacts with the backend to display targets and eliminate them.}
-	      \end{itemize}
-	      
-	       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	      \resheading{On Campus Experience}
-	      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	      \begin{itemize}[leftmargin=*]
-	      	\item[]
-	      	    \job
-	      	      {Machine Intelligence Lab}
-	      	      {Gainesville, FL}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Jordan Matthew Hanson} \\ \vspace{1pt}
+    \href{https://www.matthew-hanson.com}{\underline{matthew-hanson.com}} $|$  \href{mailto:matthew.hanson.tech@gmail.com}{\underline{matthew.hanson.tech@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/jordan-hanson1/}{\underline{linkedin.com/in/jordanhanson2}} $|$
+    \href{https://github.com/jordanhanson1}{\underline{github.com/jordanhanson1}} $|$ AWS Certified Solutions Architect Associate
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Florida, College of Engineering}{Gainesville, FL}
+      {Bachelor of Science in Computer Science, \textbf{GPA: 3.85}}{Aug. 2018 -- December 2022}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+
+    %american express internship
+    \resumeSubheading
+      {Software Engineering Intern}{June 2022 | August 2022}
+      {American Express}{Phoenix, AZ}
+      \resumeItemListStart
+        \resumeItem{Intern on the Travel and Leisure team}
+      \resumeItemListEnd
+      
+      %Giganetworks internship
+      \resumeSubheading
+      {Software Engineering Intern}{May 2021 | August 2021}
+      {Giganetworks}{Miami, FL}
+      \resumeItemListStart
+        \resumeItem {Lead developer of a team of 3 other Interns to develop a full-stack CRM web application which improved the organization of projects, clients, sales, events, and renewals}
+	    \resumeItem {Implemented features such as soft deletes, email remainders, user authentication, and database backups}
+	    \resumeItem { Utilized \textbf{MySQL, Ruby on Rails, Javascript, and Linux (Debian)}}
+      \resumeItemListEnd
+      
+      \resumeSubheading
+      {Undergraduate Researcher}{January 2022 | May 2022}
+      {Machine Intelligence Lab}{Gainesville, FL}
+      \resumeItemListStart
+        \resumeItem {Worked on a team of over 60 other students to develop software to navigate multiple self driving vehicles}
+	    \resumeItem {Migrated packages from Python 2 to Python 3 for self driving aquatic robots to allow use of ROS noetic}
+      \resumeItemListEnd
+      
+      {Machine Intelligence Lab}
+	      	      {}
 	      	      {Undergraduate Researcher}
 	      	      {January 2022 | Present}
-	      	      \begin{itemize}
-	      	      	\item Migrating packages from Python 2 to Python 3 for self driving aquatic robots
-	      	      \end{itemize}
-	      	      
-	      	      \job
-	      	      {UF Association of Computer Machinery}
-	      	      {Gainesville, FL}
-	      	      {Marketing Lead}
-	      	      {May 2021 | Present}
-	      	      \begin{itemize}
-	      	      	\item Increased ACM virtual membership by over 500 members by making announcements in classes with CS students and reaching out to potential members on social media.
-	      	      \end{itemize}
-	      	      \job
-	      	      {UF Dance Marathon}
-	      	      {Gainesville, FL}
-	      	      {Technology Captain}
-	      	      {August 2020 | May 2022}
-	      	      \begin{itemize}
-	      	      	\item Raised \textbf{\$3,000+} for Shands Children’s Hospital by reaching out to connections using social media and email
-	      	      	\item Collaborated with a team to implement maintenance and content management for the Dance Marathon Website and iOS app using JavaScript, Swift, and PHP
-	      	      \end{itemize}
-	      \end{itemize}
-	      
-	      
-	      
-	      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	      \resheading{Skills}
-	      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	      \begin{itemize}[leftmargin=*]
-	      	\setlength\itemsep{0em}
-	      	\item[] \skill{Programming Languages}{Javascript, Java, C++, Python, Matlab, HTML/CSS; }
-	      	 \skill{Frameworks and Libraries}{React, React Native, Node, Express}
-	      	 \item[] \skill{Databases}{MySQL, Firebase Firestore (NoSQL), Firebase Real Time Database; }
-	         \skill{Operating Systems}{Linux (Debian, Ubuntu)}
-	      \end{itemize}
-	      
-	      \ 
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Selected Projects \small{(Others: \href{https://matthew-hanson.com/projects}{matthew-hanson.com/projects})}}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Hatch} $|$ \emph{Javascript, Firebase, React} (\href{https://hatchmatch.app}{\underline{hatchmatch.app}}) }{June 2021 -- September 2021 } 
+          \resumeItemListStart
+            \resumeItem{Developed a platform to give college entrepreneurs the tools to connect and grow an idea with 40+ users}
+            \resumeItem{Created a real-time chat by using a Firebase Function that listens for changes in the database}
+            \resumeItem{Implemented Google Authentication, user search, and friend request/accept}
+          \resumeItemListEnd
+     \resumeProjectHeading
+          {\textbf{Mission DM} $|$ \emph{Node.js, Express, Firebase, React, Javascript}}{June 2021 -- September 2021 } 
+          \resumeItemListStart
+            \resumeItem{Created a secret agent style game with \textbf{100+ users} generating \textbf{\$1000+} for Shands Children Hospital}
+            \resumeItem{Architected a Node.js back-end that assigned and sent out emails with targets for each player every three days}
+            \resumeItem{Developed a front end with React.js that interacts with the back-end to display targets and eliminate them.}
+          \resumeItemListEnd
+          
+          
+          \resumeProjectHeading
+          {\textbf{resQ} $|$ \emph{React Native, Express, Node} (\href{https://devpost.com/software/resq-3tng2a}{\underline{devpost.com/software/resq-3tng2a}}) }{January 2022 } 
+          \resumeItemListStart
+            \resumeItem{Developed a full stack mobile app to protect students walking home at night}
+            \resumeItem {Worked with three other students for a UF Hackathon,  placing \textbf{1st Overall}}
+            \resumeItem{Created Google Cloud functions to send text messages and implemented user authentication using phone numbers}
+          \resumeItemListEnd
+          
+    \resumeSubHeadingListEnd
+
+
+\section{On Campus Experience and Leadership}
+    \resumeSubHeadingListStart
+    
+    \resumeSubheading
+         {Marketing Lead then Vice President} {May 2021 -- Present }
+          {UF Association of Computing Machinery (ACM)}{Gainesville, FL} 
+          \resumeItemListStart
+            \resumeItem{Increased ACM virtual membership by over 500 members by making announcements in classes with CS students and reaching out to potential members on social media}
+          \resumeItemListEnd
+          
+          
+      \resumeSubheading
+          {Technology Captain} {August 2020 -- May 2022 }
+          {UF Dance Marathon}{Gainesville, FL} 
+          \resumeItemListStart
+            \resumeItem{Raised \textbf{\$3,000+} for Shands Children’s Hospital by reaching out to connections using social media and email}
+            \resumeItem{Collaborated with a team to implement maintenance for the Dance Marathon Website and iOS app using JavaScript, Swift, and PHP}
+          \resumeItemListEnd
+          
+          
+    \resumeSubHeadingListEnd
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.2in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, Python, C/C++, SQL (MySQL), JavaScript, Ruby, HTML/CSS, Matlab} \\
+     \textbf{Frameworks}{: Node.js, React, Ruby On Rails, React Native, Express, Material-UI} \\
+     \textbf{Developer Tools}{: Git, Google Cloud Platform, Firebase, AWS, VS Code, } \\
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
 \end{document}
