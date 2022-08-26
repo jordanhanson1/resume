@@ -1,6 +1,6 @@
 %-------------------------
 % Resume in Latex
-% Author : Jordan Hanson
+% Author : Jake Gutierrez
 % Based off of: https://github.com/sb2nov/resume
 % License : MIT
 %------------------------
@@ -36,16 +36,16 @@
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{-1pt}
+\renewcommand{\footrulewidth}{-1pt}
 
 % Adjust margins
-\addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-0.75in}
-\addtolength{\textheight}{1.2in}
-
+\addtolength{\topmargin}{-0.85in}
+\addtolength{\textheight}{1.3in}
+\setlength{\footskip}{3.08003pt}
 \urlstyle{same}
 
 \raggedbottom
@@ -55,7 +55,7 @@
 % Sections formatting
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -72,18 +72,52 @@
   \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
+      \textit{\small#3} &  \textit{\small#4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubheadingEducation}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+     \textbf{#1} & #2 \\
+      \small#3 &  \small#4 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheadingLeadership}[2]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+    \end{tabular*}\vspace{-2pt}
+}
+\newcommand{\resumeSubheadingTwo}[2]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      #1 & #2 \\
     \end{tabular*}\vspace{-7pt}
 }
 
 \newcommand{\releventCourses}[1]{
-\item
-    \textit{\small#1} 
+   \item\small{
+    {#1 \vspace{-5pt}}
+  }
+}
+
+\newcommand{\leaderShip}[1]{
+    \item\small{
+    {#1 \vspace{-5pt}}
+  }
 }
 
 \newcommand{\resumeSubSubheading}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}
+}
+\newcommand{\resumeSubheadingTwoTwo}[2]{
+    \item
+    \begin{tabular*}
       \textit{\small#1} & \textit{\small #2} \\
     \end{tabular*}
 }
@@ -124,67 +158,78 @@
     \href{https://github.com/jordanhanson1}{\underline{github.com/jordanhanson1}}
     $|$ {305-741-8067}
     $|$ AWS Certified Solutions Architect Associate
-\end{center}
+\end{center} \vspace{-15pt}
 
 
 %-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
-    \resumeSubheading
+    \resumeSubheadingEducation
       {University of Florida, College of Engineering}{Gainesville, FL}
-      {Bachelor of Science in Computer Science, \textbf{GPA: 3.85}}{Aug. 2018 -- December 2022}
-
-    \releventCourses
-        {\textbf{Relevent Courses:} \normalfont{Data Structures and Algorithms, Operating Systems, Software Engineering, Databases 1, Databases 2, Linear Algebra, Computer Organization, Programming Language Concepts, Computer Networks, Probability, Discrete Structures, Numerical Analysis }}
+      {Masters of Science in Computer Science}{January 2023 | December 2023}
       
-  \resumeSubHeadingListEnd  \vspace{-7pt}
+      \resumeSubheadingEducation
+      {University of Florida, College of Engineering}{Gainesville, FL}
+      {Bachelors of Science in Computer Science, \textbf{GPA: 3.85}}{August 2018 | December 2022}
+   
+     
+      
+    \releventCourses
+        {\textbf{Relevant Courses:} \normalfont{Math for Intelligent Systems, Advanced Data Structures, Analysis of Algorithms, Computer Networks, Operating Systems, Software Engineering}}
+      
+  \resumeSubHeadingListEnd  
 
-%-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.2in, label={}]
-    \small{\item{
-     \textbf{Languages}{: Java, Python, C/C++, SQL (MySQL), JavaScript, Ruby, HTML/CSS, Matlab} \\
-     \textbf{Frameworks}{: Node.js, Spring boot, React, Junit, Ruby On Rails, React Native, Express, Material-UI} \\
-     \textbf{Developer Tools}{: Git, Jenkins, Google Cloud Platform, Firebase, AWS, Postman } \\
-    }}
- \end{itemize} \vspace{-17pt}
 
-%-------------------------------------------
 
 %-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
 
 
+
     %american express internship
     \resumeSubheading
       {Software Engineering Intern}{June 2022 | August 2022}
-      {American Express, Travel and Lifestyle Services team}{Phoenix, AZ}
+      {American Express, Travel and Leisure Services team}{Phoenix, AZ}
       \resumeItemListStart
-        \resumeItem{As a member of a Agile scrum team, designed and developed a RESTful Micro-service with Spring MVC (Java) to calculate carbon offset for a trip}
-        \resumeItem{Created a Jenkins CI/CD pipeline to automate Maven build and deploy to Amex cloud}
-        \resumeItem{ Implemented Unit and Integration
-            tests with JUnit5 and Mockito to achieve over 80\% automated test coverage }
+        \resumeItem{Designed and developed a RESTful micro-service with Spring Boot (Java) for a new travel feature}
+        \resumeItem{Created a Jenkins CI/CD pipeline to automate building, testing, scanning, and deploying the application}
+        \resumeItem{Implemented Unit and Integration
+            tests with JUnit5 and Mockito to achieve \textbf{95\% test coverage}}
+        \resumeItem{Achieved A rating for all categories in SonarQube code quality report}
+     \resumeItemListEnd
+      
+      %Giganetworks internship
+     \resumeSubheading
+      {Software Engineering Intern}{May 2021 | August 2021}
+      {Giganetworks}{Miami, FL}
+      \resumeItemListStart
+        \resumeItem {Led development of a Ruby on Rails CRM web application which improved the organization of sales}
+	    \resumeItem {Implemented features such as soft deletes, email remainders, user authentication, and database backups}
+	    \resumeItem { Deployed the application on a Debian Linux VM with an Apache server }
       \resumeItemListEnd
+      
+    %TA 
+    \resumeSubheading
+      {Teaching Assistant}{August 2022 | December 2022}
+      {Department of Computer and Information Science and Engineering}{Gainesville, FL}
+      \resumeItemListStart
+        \resumeItem{Leading lab sections and office hours for Programming 1 in Python for \textbf{650+ students}}
+        \resumeItem{Translating computer science concepts into more digestible form}
+      \resumeItemListEnd
+
+    
       
       %MIL lab
       \resumeSubheading
       {Undergraduate Researcher}{January 2022 | May 2022}
       {Machine Intelligence Lab}{Gainesville, FL}
       \resumeItemListStart
-        \resumeItem {Worked on a team of over 60 other students to develop software to navigate multiple self driving vehicles}
-	    \resumeItem {Migrated packages from Python 2 to Python 3 for self driving aquatic robots to allow use of ROS noetic}
+        \resumeItem {Worked on a team of 60+ other students to develop software to navigate multiple self-driving vehicles}
+	    \resumeItem {Migrated packages from Python 2 to Python 3 for self-driving aquatic robots to allow the use of ROS noetic}
       \resumeItemListEnd
       
-      %Giganetworks internship
-      \resumeSubheading
-      {Software Engineering Intern}{May 2021 | August 2021}
-      {Giganetworks}{Miami, FL}
-      \resumeItemListStart
-        \resumeItem {Lead developer of a team of 3 other Interns to develop a Ruby on Rails CRM web application which improved the organization of projects, clients, sales, events, and renewals}
-	    \resumeItem {Implemented features such as soft deletes, email remainders, user authentication, and database backups}
-	    \resumeItem { Deployed the application on a Debian Linux VM with an Apache server }
-      \resumeItemListEnd
+      
       
       
       
@@ -194,54 +239,55 @@
 
 
 %-----------PROJECTS-----------
-\section{Selected Projects \small{(Others: \href{https://matthew-hanson.com/projects}
-{\underline{matthew-hanson.com/projects}})}}
+\section{Projects} 
     \resumeSubHeadingListStart
+     \resumeProjectHeading
+          {\textbf{resQ} $|$ \emph{React Native, Express, Node} (\href{https://devpost.com/software/resq-3tng2a}{\underline{devpost.com/software/resq-3tng2a}}) }{January 2022 } 
+          \resumeItemListStart
+            \resumeItem {Achieved \textbf{Best Overall Project} for UF's hackathon for a full stack mobile app to protect students walking alone}
+            \resumeItem{Created Google Cloud functions to send text messages and implemented user authentication using phone numbers}
+          \resumeItemListEnd
+          
+        \resumeProjectHeading
+          {\textbf{Mission DM} $|$ \emph{Node.js, Express, Firebase, React, Javascript}}{December 2021 -- February 2022 } 
+          \resumeItemListStart
+            \resumeItem{Created a secret agent style game with \textbf{100+ users} generating \textbf{\$1000+} for Shands Children Hospital}
+            \resumeItem{Architected a Node.js backend that assigned and sent out emails with targets for each player every three days}
+          \resumeItemListEnd
+          
       \resumeProjectHeading
           {\textbf{Hatch} $|$ \emph{Javascript, Firebase, React} (\href{https://hatchmatch.app}{\underline{hatchmatch.app}}) }{June 2021 -- September 2021 } 
           \resumeItemListStart
             \resumeItem{Developed a platform to give college entrepreneurs the tools to connect and grow an idea with 40+ users}
-            \resumeItem{Created a real-time chat by using a Firebase Function that listens for changes in the database}
-            \resumeItem{Implemented Google Authentication, user search, and friend request/accept}
+            \resumeItem{Implemented Google Authentication, real time chat, user search, and friend request/accept}
           \resumeItemListEnd
-     \resumeProjectHeading
-          {\textbf{Mission DM} $|$ \emph{Node.js, Express, Firebase, React, Javascript}}{June 2021 -- September 2021 } 
-          \resumeItemListStart
-            \resumeItem{Created a secret agent style game with \textbf{100+ users} generating \textbf{\$1000+} for Shands Children Hospital}
-            \resumeItem{Architected a Node.js back-end that assigned and sent out emails with targets for each player every three days}
-            \resumeItem{Developed a front end with React.js that interacts with the back-end to display targets and eliminate them.}
-          \resumeItemListEnd
-          
-          
-          \resumeProjectHeading
-          {\textbf{resQ} $|$ \emph{React Native, Express, Node} (\href{https://devpost.com/software/resq-3tng2a}{\underline{devpost.com/software/resq-3tng2a}}) }{January 2022 } 
-          \resumeItemListStart
-            \resumeItem{Developed a full stack mobile app to protect students walking home at night}
-            \resumeItem {Achieved \textbf{1st Overall} for UF's leading hackathon}
-            \resumeItem{Created Google Cloud functions to send text messages and implemented user authentication using phone numbers}
-          \resumeItemListEnd
+     
           
     \resumeSubHeadingListEnd
 
 
-\section{On Campus Experience and Leadership}
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.2in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, Python, C/C++, SQL (MySQL), JavaScript, Ruby, HTML/CSS, Matlab} \\
+     \textbf{Frameworks}{: Node.js, Spring Boot, React, Junit, Ruby On Rails, React Native, Express, Material-UI, OpenAPI} \\
+     \textbf{Developer Tools}{: Git, Jenkins, Google Cloud Platform, Firebase, AWS, Postman, SonarQube, JaCoCo } \\
+    }}
+ \end{itemize} \vspace{-17pt}
+
+%-------------------------------------------
+
+
+\section{Leadership}
     \resumeSubHeadingListStart
     
-    \resumeSubheading
-         {Marketing Lead -- Vice President} {May 2021 -- Present }
-          {UF Association of Computing Machinery (ACM)}{Gainesville, FL} 
-          \resumeItemListStart
-            \resumeItem{Organized and led professional and social events for a club with over 1000 members}
-            \resumeItem{Increased virtual membership by over 500 members }
-          \resumeItemListEnd
+    \leaderShip
+        {\textbf{Vice President and former Marketing Lead}, UF Association of Computer Machinery | Organized and led professional, social, and technical events for a club with \textbf{1000+ members}.}
           
+       \leaderShip
+          {\textbf{Technology Captain}, Dance Marathon |  Raised \textbf{\$3,000+} for Shand's Children’s Hospital.}
           
-      \resumeSubheading
-          {Technology Captain} {August 2020 -- May 2022 }
-          {UF Dance Marathon}{Gainesville, FL} 
-          \resumeItemListStart
-            \resumeItem{Raised \textbf{\$3,000+} for Shands Children’s Hospital while working on a team to implement maintenance for the Dance Marathon Website and iOS app using JavaScript, Swift, and PHP}
-          \resumeItemListEnd
           
           
     \resumeSubHeadingListEnd
